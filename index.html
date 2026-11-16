@@ -1,0 +1,36 @@
+<canvas id=v></canvas>
+<div id=h>草稿纸 · 只能画，没有橡皮擦 · 刷新网页即重置</div>
+<style>
+#h{position:fixed;top:14px;left:50%;transform:translateX(-50%);font:14px system-ui;color:#666;opacity:0;animation:g 8s ease-in-out infinite;pointer-events:none;user-select:none;z-index:9;text-shadow:0 0 6px #fff}
+@keyframes g{0%,12%{opacity:0}20%,78%{opacity:.8}92%,100%{opacity:0}}
+html,body{height:100%;margin:0;overflow:hidden}
+#v{position:fixed;inset:0;width:100%;height:100%;display:block}
+.beian-bar{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.85);backdrop-filter:blur(4px);padding:10px 0;text-align:center;font-size:13px;line-height:1.6;border-top:1px solid rgba(0,0,0,.06);z-index:10}
+.beian-pc{display:flex;justify-content:center;align-items:center;gap:18px}
+.beian-disclaimer{color:#e74c3c;white-space:nowrap}
+.beian-icp{color:#333;text-decoration:none;white-space:nowrap}
+.beian-gongan{display:inline-flex;align-items:center;gap:6px;color:#333;text-decoration:none;white-space:nowrap}
+.beian-gongan img{width:16px;height:16px}
+@media(max-width:768px){.beian-pc{display:none}.beian-mobile{display:flex;flex-direction:column;align-items:center;gap:4px}.beian-mobile a,.beian-mobile span{display:block;line-height:1.8}}
+@media(min-width:769px){.beian-mobile{display:none}}
+</style>
+<script>d=document,P="onpointer",c=v.getContext`2d`,c.lineWidth=2,f=0,R=()=>v.getBoundingClientRect(),S=()=>{var t=d.createElement`canvas`,w=v.clientWidth,h=v.clientHeight;if(!w||!h)return;t.width=v.width,t.height=v.height,t.getContext`2d`.drawImage(v,0,0);v.width=w,v.height=h,c.drawImage(t,0,0,v.width,v.height)},d[P+"down"]=e=>{f=e.pointerId+1;e.preventDefault();var r=R();c.beginPath();c.moveTo(e.x-r.left,e.y-r.top)},d[P+"move"]=e=>{if(f==e.pointerId+1){var r=R();c.lineTo(e.x-r.left,e.y-r.top)}c.stroke()},d[P+"up"]=_=>f=0,new ResizeObserver(S).observe(v),S()</script>
+<div class="beian-bar">
+  <div class="beian-pc">
+    <span class="beian-disclaimer">本站内容仅供学习和交流，非商业用途</span>
+    <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" class="beian-icp">浙ICP备2025187466号</a>
+    <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33030402001483" target="_blank" rel="noopener noreferrer" class="beian-gongan">
+      <img src="https://www.937788.xyz/gonganbeian.png" alt="公安备案" onerror="this.style.display='none'">
+      浙公网安备33030402001483号
+    </a>
+  </div>
+  <div class="beian-mobile">
+    <span class="beian-disclaimer">本站内容仅供学习和交流，非商业用途</span>
+    <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer" class="beian-icp">浙ICP备2025187466号</a>
+    <a href="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33030402001483" target="_blank" rel="noopener noreferrer" class="beian-gongan">
+      <img src="https://www.937788.xyz/gonganbeian.png" alt="公安备案" onerror="this.style.display='none'">
+      浙公网安备33030402001483号
+    </a>
+  </div>
+</div>
+
